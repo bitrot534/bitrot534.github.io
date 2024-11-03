@@ -1,4 +1,5 @@
 <!--
+ [ IMAGES FORMAT IN INDEX.HTML ]
 There is no ',' at end!
 ['image1.webp', 'image2.webp', 'image3.webp', 'image4.webp', 'image5.webp'];
 -->
@@ -17,7 +18,9 @@ There is no ',' at end!
         height: 100vh;
         margin: 0;
         background-color: #333333;
+        /* Default background color */
         color: #FFFFFF;
+        /* Default text color */
         transition: background-color 0.3s, color 0.3s;
         position: relative;
       }
@@ -47,7 +50,7 @@ There is no ',' at end!
       .update-container {
         display: flex;
         align-items: center;
-        margin-bottom: -13px; 
+        margin-bottom: 10px;
       }
 
       .restart-link {
@@ -58,10 +61,10 @@ There is no ',' at end!
   </head>
   <body>
     <div class="update-container">
-      <p>tap/click images</p>
+      <p>- tap/click on images -</p>
+      <a href="index.html" class="restart-link">- go to start -</a>
     </div>
     <img id="image" src="image1.webp" alt="Image 1">
-    <a href="index.html" class="restart-link">start cycle over anytime</a>
     <script>
       const images = ['image1.webp', 'image2.webp', 'image3.webp', 'image4.webp', 'image5.webp', 'image6.webp', 'image7.webp', 'image8.webp', 'image9.webp', 'image10.webp', 'image11.webp', 'image12.webp', 'image13.webp', 'image14.webp', 'image15.webp'];
       let currentIndex = 0;
