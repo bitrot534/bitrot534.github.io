@@ -6,7 +6,6 @@ convert input.jpg -quality 100  -resize 800x800 output.webp
 There is no ',' at end!
 ['image1.webp', 'image2.webp', 'image3.webp', 'image4.webp', 'image5.webp'];
 -->
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -92,9 +91,10 @@ There is no ',' at end!
 			<p>tap/click on images</p>
 			<a href="index.html" class="restart-link">restart</a>
 		</div>
-		<img id="image" src="image4.webp" alt="">
+		<img id="image" src="image1.webp" alt="">
 		<script>
-			const images = ['image1.webp', 'image2.webp', 'image3.webp', 'image4.webp', 'image5.webp'];
+			const images = ['image1.webp', 'image2.webp', 'image3.webp', 'image4.webp', 'image5.webp', 'image6.webp', 'image7.webp', 'image8.webp', 'image9.webp', 
+			'image10.webp', 'image11.webp', 'image12.webp', 'image13.webp', 'image4.webp', 'image15.webp',];
 			let currentIndex = 0;
 			images.forEach(src => {
 				const img = new Image();
@@ -111,3 +111,4 @@ There is no ',' at end!
 		</script>
 	</body>
 </html>
+
