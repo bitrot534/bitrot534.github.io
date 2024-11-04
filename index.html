@@ -2,77 +2,81 @@
 There is no ',' at end!
 ['image1.webp', 'image2.webp', 'image3.webp', 'image4.webp', 'image5.webp'];
 -->
+<!--
+There is no ',' at end!
+['image1.webp', 'image2.webp', 'image3.webp', 'image4.webp', 'image5.webp'];
+-->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Images Cycle</title>
-    <style>
-      body {
-        display: flex;
-        flex-direction: column;
-        justify-content: top;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        background-color: #333333;
-        color: #FFFFFF;
-        transition: background-color 0.3s, color 0.3s;
-        position: relative;
-      }
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Images Cycle</title>
+		<style>
+			body {
+				display: flex;
+				flex-direction: column;
+				justify-content: top;
+				align-items: center;
+				height: 100vh;
+				margin: 0;
+				background-color: #333333;
+				color: #FFFFFF;
+				transition: background-color 0.3s, color 0.3s;
+				position: relative;
+			}
 
-      #image {
-        max-width: 90%;
-        height: auto;
-        cursor: pointer;
-        border: 3px solid #000000;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      }
+			#image {
+				max-width: 90%;
+				height: auto;
+				cursor: pointer;
+				border: 3px solid #000000;
+				border-radius: 8px;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+			}
 
-      h1 {
-        margin: 10px 0;
-        font-size: 18px;
-        text-align: center;
-      }
+			h1 {
+				margin: 10px 0;
+				font-size: 18px;
+				text-align: center;
+			}
 
-      footer {
-        margin-top: auto;
-        padding: 10px;
-        font-size: 14px;
-        text-align: center;
-      }
+			footer {
+				margin-top: auto;
+				padding: 10px;
+				font-size: 14px;
+				text-align: center;
+			}
 
-      .update-container {
-        display: flex;
-        align-items: center;
-        margin-bottom: -13px; 
-      }
+			.update-container {
+				display: flex;
+				align-items: center;
+				margin-bottom: -13px;
+			}
 
-      .restart-link {
-        color: #FFFFFF;
-        margin-left: 10px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="update-container">
-      <p>tap/click images</p>
-    </div>
-    <img id="image" src="image1.webp" alt="Image 1">
-    <a href="index.html" class="restart-link">start cycle over anytime</a>
-    <script>
-      const images = ['image1.webp', 'image2.webp', 'image3.webp', 'image4.webp', 'image5.webp', 'image6.webp', 'image7.webp', 'image8.webp', 'image9.webp', 'image10.webp', 'image11.webp', 'image12.webp', 'image13.webp', 'image14.webp', 'image15.webp'];
-      let currentIndex = 0;
-      images.forEach(src => {
-        const img = new Image();
-        img.src = src;
-      });
-      document.getElementById('image').addEventListener('click', function() {
-        currentIndex = (currentIndex + 1) % images.length;
-        this.src = images[currentIndex];
-      });
-    </script>
-  </body>
+			.restart-link {
+				color: #FFFFFF;
+				margin-left: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="update-container">
+			<p>tap/click images</p>
+		</div>
+		<img id="image" src="image1.webp" alt="Image 1">
+		<a href="index.html" class="restart-link">start cycle over anytime</a>
+		<script>
+			const images = ['image1.webp', 'image2.webp', 'image3.webp', 'image4.webp', 'image5.webp', 'image6.webp', 'image7.webp', 'image8.webp', 'image9.webp', 'image10.webp', 'image11.webp', 'image12.webp', 'image13.webp', 'image14.webp', 'image15.webp'];
+			let currentIndex = 0;
+			images.forEach(src => {
+				const img = new Image();
+				img.src = src;
+			});
+			document.getElementById('image').addEventListener('click', function() {
+				currentIndex = (currentIndex + 1) % images.length;
+				this.src = images[currentIndex];
+			});
+		</script>
+	</body>
 </html>
