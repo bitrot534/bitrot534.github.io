@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Images Cycle</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: top;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #333333;
+            color: #FFFFFF;
+            transition: background-color 0.3s, color 0.3s;
+            position: relative;
+        }
+
+        #image {
+            max-width: 90%;
+            height: auto;
+            cursor: pointer;
+            border: 3px solid #000000;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            margin: 10px 0;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 10px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .update-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: -15px;
+        }
+
+        .restart-link {
+            color: #FFFFFF;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="update-container">
+        <p>tap/click images</p>
+    </div>
+    <img id="image" src="R0004415.webp" alt="Image 1">
+    <a href="index.html" class="restart-link">start cycle over anytime</a>
+    <script>
+        const images = [
+            'R0004415.webp', 
+            'R0004396.webp',
+            'R0004377.webp',
+            'R0004342.webp',
+            'R0003211.webp',
+            'R0002590.webp', 
+            'R0002589.webp', 
+            'R0002580.webp', 
+            'R0002579.webp', 
+            'R0002568.webp', 
+            'R0002565.webp', 
+            'R0002564.webp', 
+            'R0002553.webp', 
+            'R0002348.webp', 
+            'R0002332.webp', 
+            'R0002320.webp', 
+            'R0002166.webp', 
+            'R0000355.webp', 
+            'R0000072.webp', 
+            'IMG_1208.webp', 
+            'IMG_1204.webp', 
+ <!-- NOTE: There isn't a "," on last image --> 
+            'IMG_1203.webp'
+        ];
+        
+        let currentIndex = 0;
+
+        images.forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
+
+        document.getElementById('image').addEventListener('click', function() {
+            currentIndex = (currentIndex + 1) % images.length;
+            this.src = images[currentIndex];
+        });
+    </script>
+</body>
+</html>
