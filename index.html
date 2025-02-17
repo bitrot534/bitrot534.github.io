@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,56 +9,85 @@
         body {
             display: flex;
             flex-direction: column;
-            justify-content: top;
+            justify-content: flex-start;
             align-items: center;
             height: 100vh;
             margin: 0;
+            padding: 0; 
             background-color: #333333;
             color: #FFFFFF;
             transition: background-color 0.3s, color 0.3s;
             position: relative;
+            font-family: Arial, sans-serif;
         }
-
-        #image {
-            max-width: 90%;
-            height: auto;
-            cursor: pointer;
-            border: 3px solid #000000;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        h1 {
-            margin: 10px 0;
-            font-size: 18px;
-            text-align: center;
-        }
-
-        footer {
-            margin-top: auto;
-            padding: 10px;
-            font-size: 14px;
-            text-align: center;
-        }
-
-        .update-container {
-            display: flex;
-            align-items: center;
-            margin-bottom: -15px;
-        }
-
-        .restart-link {
-            color: #FFFFFF;
-            margin-left: 10px;
-        }
+                #image {
+                    max-width: 90%;
+                    height: auto;
+                    cursor: pointer;
+                    border: 3px solid #000000;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                    margin: 10px 0; 
+                }
+        
+                h1 {
+                    margin:0; 
+                    font-size: 24px;
+                    text-align: center;
+                } 
+        
+                footer {
+                    margin-top: auto;
+                    padding: 5px; 
+                    font-size: 14px;
+                    text-align: center;
+                }
+        
+                .update-container {
+                    display: flex;
+                    align-items: center;
+                    margin: 0; 
+                }
+        
+                .restart-link {
+                    color: #FFD700; 
+                    margin: 0; 
+                    text-decoration: none;
+                    transition: color 0.3s;
+                    font-size: 16px; 
+                }
+        
+                @media (max-width: 600px) {
+                    h1 {
+                        font-size: 20px; 
+                    }
+        
+                    #image {
+                        max-width: 100%; 
+                    }
+        
+                    .update-container {
+                        flex-direction: column; 
+                        align-items: center; 
+                    }
+        
+        
+                
+        restart-link {
+            color: #FFD700; 
+            margin: 0; 
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 16px;
     </style>
 </head>
+
 <body>
     <div class="update-container">
-        <p>tap/click images</p>
+        <p>Tap/click images to cycle through</p>
     </div>
     <img id="image" src="R0004415.webp" alt="Image 1">
-    <a href="index.html" class="restart-link">start cycle over anytime</a>
+    <a href="index.html" class="restart-link">Tap/click to start cycle over</a>
     <script>
         const images = [
             'R0004415.webp', 
@@ -81,21 +111,23 @@
             'R0000072.webp', 
             'IMG_1208.webp', 
             'IMG_1204.webp', 
- <!-- NOTE: There isn't a "," on last image --> 
-            'IMG_1203.webp'
+            'IMG_1203.webp' // NOTE: No comma on last image
         ];
         
         let currentIndex = 0;
 
+        
         images.forEach(src => {
             const img = new Image();
             img.src = src;
         });
 
+        
         document.getElementById('image').addEventListener('click', function() {
             currentIndex = (currentIndex + 1) % images.length;
             this.src = images[currentIndex];
         });
     </script>
 </body>
+
 </html>
