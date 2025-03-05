@@ -1,134 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>Photo Gallery</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				margin: 0;
+				background-color: #121212;
+				color: #fff;
+				transition: filter .3s ease
+			}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Images Cycle</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            padding: 0; 
-            background-color: #333333;
-            color: #FFFFFF;
-            transition: background-color 0.3s, color 0.3s;
-            position: relative;
-            font-family: Arial, sans-serif;
-        }
-                #image {
-                    max-width: 90%;
-                    height: auto;
-                    cursor: pointer;
-                    border: 3px solid #000000;
-                    border-radius: 8px;
-                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                    margin: 10px 0; 
-                }
-        
-                h1 {
-                    margin:0; 
-                    font-size: 24px;
-                    text-align: center;
-                } 
-        
-                footer {
-                    margin-top: auto;
-                    padding: 5px; 
-                    font-size: 14px;
-                    text-align: center;
-                }
-        
-                .update-container {
-                    display: flex;
-                    align-items: center;
-                    margin: 0; 
-                }
-        
-                .restart-link {
-                    color: #FFD700; 
-                    margin: 0; 
-                    text-decoration: none;
-                    transition: color 0.3s;
-                    font-size: 16px; 
-                }
-        
-                @media (max-width: 600px) {
-                    h1 {
-                        font-size: 20px; 
-                    }
-        
-                    #image {
-                        max-width: 100%; 
-                    }
-        
-                    .update-container {
-                        flex-direction: column; 
-                        align-items: center; 
-                    }
-        
-        
-                
-        restart-link {
-            color: #FFD700; 
-            margin: 0; 
-            text-decoration: none;
-            transition: color 0.3s;
-            font-size: 16px;
-    </style>
-</head>
+			h1 {
+				text-align: left;
+				margin: 20px 0;
+				color: #dc143c
+			}
 
-<body>
-    <div class="update-container">
-        <p>Click images to cycle through</p>
-    </div>
-    <img id="image" src="R0004550.webp" alt="Image 1">
-    <a href="index.html" class="restart-link">Link to restart</a>
-    <script>
-        const images = [
-            'R0004550.webp', 
-	    'R0004415.webp', 
-            'R0004396.webp',
-            'R0004377.webp',
-            'R0004342.webp',
-            'R0003211.webp',
-            'R0002590.webp', 
-            'R0002589.webp', 
-            'R0002580.webp', 
-            'R0002579.webp', 
-            'R0002568.webp', 
-            'R0002565.webp', 
-            'R0002564.webp', 
-            'R0002553.webp', 
-            'R0002348.webp', 
-            'R0002332.webp', 
-            'R0002320.webp', 
-            'R0002166.webp', 
-            'R0000355.webp', 
-            'R0000072.webp', 
-            'IMG_1208.webp', 
-            'IMG_1204.webp', 
-            'IMG_1203.webp' // NOTE: No comma on last image
-        ];
-        
-        let currentIndex = 0;
+			.masonry {
+				column-count: 3;
+				column-gap: 16px;
+				padding: 20px
+			}
 
-        
-        images.forEach(src => {
-            const img = new Image();
-            img.src = src;
-        });
+			.masonry img {
+				width: 100%;
+				margin-bottom: 16px;
+				display: block;
+				break-inside: avoid;
+				cursor: pointer;
+				transition: transform .2s ease
+			}
 
-        
-        document.getElementById('image').addEventListener('click', function() {
-            currentIndex = (currentIndex + 1) % images.length;
-            this.src = images[currentIndex];
-        });
-    </script>
-</body>
+			.masonry img:hover {
+				transform: scale(1.05)
+			}
 
+			.modal {
+				display: none;
+				position: fixed;
+				z-index: 1000;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, .8);
+				justify-content: center;
+				align-items: center
+			}
+
+			.modal img {
+				max-width: 90%;
+				max-height: 80%;
+				border: 5px solid #fff;
+				box-sizing: border-box
+			}
+
+			.modal-close {
+				position: absolute;
+				top: 20px;
+				right: 20px;
+				color: #fff;
+				font-size: 30px;
+				cursor: pointer
+			}
+
+			.blur {
+				filter: blur(100px)
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Photos</h1>
+		<div class="masonry">
+			<img src="R0004550.webp" alt="" loading="lazy" onclick="openModal(this)">
+			<img src="R0004415.webp" alt="" loading="lazy" onclick="openModal(this)">
+			<img src="R0004396.webp" alt="" loading="lazy" onclick="openModal(this)">
+			<img src="R0004377.webp" alt="" loading="lazy" onclick="openModal(this)">
+			<img src="R0004342.webp" alt="" loading="lazy" onclick="openModal(this)">
+			<img src="R0003211.webp" alt="" loading="lazy" onclick="openModal(this)">
+			<img src="R0002590.webp" alt="" loading="lazy" onclick="openModal(this)">
+			<img src="R0002589.webp" alt="" loading="lazy" onclick="openModal(this)">
+			<img src="R0002580.webp" alt="" loading="lazy" onclick="openModal(this)">
+			<img src="R0002579.webp" alt="" loading="lazy" onclick="openModal(this)">
+			<img src="R0002568.webp" alt="" loading="lazy" onclick="openModal(this)">
+			<img src="R0002565.webp" alt="" loading="lazy" onclick="openModal(this)">
+			<img src="R0002564.webp" alt="" loading="lazy" onclick="openModal(this)">
+			<img src="R0002553.webp" alt="" loading="lazy" onclick="openModal(this)">
+			<img src="R0002348.webp" alt="" loading="lazy" onclick="openModal(this)">
+			<img src="R0002332.webp" alt="" loading="lazy" onclick="openModal(this)">
+			<img src="R0002320.webp" alt="" loading="lazy" onclick="openModal(this)">
+			<img src="R0002166.webp" alt="" loading="lazy" onclick="openModal(this)">
+			<img src="R0000355.webp" alt="" loading="lazy" onclick="openModal(this)">
+			<img src="R0000072.webp" alt="" loading="lazy" onclick="openModal(this)">
+			<img src="IMG_1208.webp" alt="" loading="lazy" onclick="openModal(this)">
+			<img src="IMG_1204.webp" alt="" loading="lazy" onclick="openModal(this)">
+			<img src="IMG_1203.webp" alt="" loading="lazy" onclick="openModal(this)">
+		</div>
+		<div id="myModal" class="modal">
+			<span class="modal-close" onclick="closeModal()">&times;</span>
+			<img id="modalImage" src="" alt="">
+		</div>
+		<script>
+			function openModal(e) {
+				var n = document.getElementById("myModal"),
+					t = document.getElementById("modalImage");
+				n.style.display = "flex", t.src = e.src
+			}
+
+			function closeModal() {
+				document.getElementById("myModal").style.display = "none"
+			}
+			window.onclick = function(e) {
+				var n = document.getElementById("myModal");
+				e.target === n && (n.style.display = "none")
+			}
+		</script>
+	</body>
 </html>
