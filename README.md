@@ -1,2 +1,2 @@
-# bitrot534.gallery.github.io
+# bitrot534.github.io
 Photo Gallery
